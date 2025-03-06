@@ -25,10 +25,10 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-8 flex-1 justify-center">
-          <Link href="#" className="text-white hover:text-gray-300">
+          <Link href="/" className="text-white hover:text-gray-300">
             HOME
           </Link>
-          <Link href="#" className="text-white hover:text-gray-300">
+          <Link href="/MyAccount" className="text-white hover:text-gray-300">
             MY ACCOUNT
           </Link>
           <Link href="#" className="text-white hover:text-gray-300">
