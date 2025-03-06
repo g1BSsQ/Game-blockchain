@@ -1,6 +1,37 @@
-import "~/styles/globals.css";
-import type { AppProps } from "next/app";
+import type { AppProps } from "next/app"
+import '../styles/globals.css';
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import { MeshProvider } from "@meshsdk/react"
+import { WalletProvider } from "../context/WalletContext"
+import { useRouter } from "next/router"
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  // Hide header & footer if path starts with "/Game"
+  const isGameRoute = router.pathname.startsWith("/Game");
+  return (
+    <MeshProvider>
+      <WalletProvider>
+        {!isGameRoute && (
+          <header>
+            <Header />
+          </header>
+        )}
+
+        <main>
+          <Component {...pageProps} />
+        </main>
+
+        {!isGameRoute && (
+          <footer>
+            <Footer />
+          </footer>
+        )}
+      </WalletProvider>
+    </MeshProvider>
+  )
 }
+
+export default MyApp
